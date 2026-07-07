@@ -285,68 +285,6 @@
     { passive: true }
   );
 
-  /* ---------- Theme switcher (light / dark) ---------- */
-  (function () {
-    try {
-      var stored = localStorage.getItem("theme");
-      var systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      function applyTheme(theme) {
-        if (theme === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("theme", "dark");
-        } else {
-          document.documentElement.removeAttribute("data-theme");
-          localStorage.setItem("theme", "light");
-        }
-      }
-
-      // initial
-      if (stored === "dark" || (!stored && systemPrefersDark)) {
-        applyTheme("dark");
-      }
-
-      // build UI
-      var switcher = document.createElement("div");
-      switcher.className = "theme-switcher";
-      switcher.innerHTML =
-        '<span aria-hidden="true">☀️</span>' +
-        '<button type="button" class="toggle" aria-label="Toggle theme" aria-pressed="false"><span class="knob"></span></button>' +
-        '<span aria-hidden="true">🌙</span>';
-      var footerBottom = document.querySelector(".footer-bottom");
-      if (footerBottom) {
-        footerBottom.appendChild(switcher);
-      } else {
-        document.body.appendChild(switcher);
-      }
-
-      var toggleBtn = switcher.querySelector(".toggle");
-
-      function updateUI() {
-        var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-        toggleBtn.setAttribute("aria-pressed", String(isDark));
-      }
-
-      toggleBtn.addEventListener("click", function () {
-        var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-        applyTheme(isDark ? "light" : "dark");
-        updateUI();
-      });
-
-      toggleBtn.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggleBtn.click();
-        }
-      });
-
-      updateUI();
-    } catch (err) {
-      // silent fail — do not break main script
-      console.warn("Theme switcher init error", err);
-    }
-  })();
-
   /* ---------- Prominent floating object + cursor-follow effect ---------- */
   (function () {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

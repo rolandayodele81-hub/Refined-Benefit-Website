@@ -312,81 +312,16 @@ body::after {
   .cursor-light { display: none !important; }
 }
 
-/* Theme variables and switcher */
+/* Light theme baseline */
 :root { transition: color 240ms ease, background 240ms ease; }
-[data-theme="dark"] {
-  --bg: #071227;
-  --bg-soft: #071829;
-  --surface: #071829;
-  --surface-2: #08162a;
-  --text: #e6eefc;
-  --text-soft: #a9b7d6;
-  --primary: #8ab4ff;
-  --accent: #8ab4ff;
-  --ink: #ffffff;
-}
-
-/* Make emphasized lead text readable in dark mode */
-[data-theme="dark"] .lead-strong {
-  color: #ffffff !important;
-}
-
 body { transition: background-color 260ms ease, color 260ms ease; }
-
-.theme-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.92);
-  box-shadow: 0 10px 30px rgba(2,14,34,0.12);
-  color: var(--text);
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-.theme-switcher .toggle {
-  width: 44px;
-  height: 26px;
-  border-radius: 999px;
-  background: var(--bg-soft);
-  position: relative;
-  border: 1px solid rgba(15,36,59,0.06);
-  cursor: pointer;
-  padding: 2px;
-}
-.theme-switcher .knob {
-  width: 20px;
-  height: 20px;
-  background: #ffffff;
-  border-radius: 50%;
-  display: block;
-  transform: translateX(0);
-  transition: transform 220ms cubic-bezier(.2,.9,.3,1), background 220ms ease;
-  box-shadow: 0 6px 14px rgba(2,14,34,0.12);
-}
-[data-theme="dark"] .theme-switcher {
-  background: rgba(6,15,35,0.72);
-  color: var(--text);
-}
-[data-theme="dark"] .theme-switcher .toggle {
-  background: rgba(255,255,255,0.04);
-  border-color: rgba(255,255,255,0.06);
-}
-[data-theme="dark"] .theme-switcher .knob { transform: translateX(18px); }
 
 /* Small responsive adjustment */
 /* When placed inside the footer bottom area, make it sit inline to the right */
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.footer-bottom .theme-switcher { margin-left: 12px; background: transparent; box-shadow: none; padding: 4px 8px; }
 
 @media (max-width: 720px) {
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .footer-bottom .theme-switcher { margin-left: 0; }
-}
-
-@media (max-width: 420px) {
-  .theme-switcher { font-size: 0.8rem; }
 }
 .about, .people, .reasons, .testimonials-section, .service-section, .contact-page { padding: 84px 0; scroll-margin-top: 96px; }
 
